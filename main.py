@@ -7,7 +7,7 @@ import time
 
 visited = set()
 OUTPUT_FILE = "scraped_data.csv"
-RATE_LIMIT_SECONDS = 2  # delay between requests
+RATE_LIMIT_SECONDS = 1  # delay between requests
 
 # Prepare CSV file
 with open(OUTPUT_FILE, mode='w', newline='', encoding='utf-8') as file:
