@@ -1,43 +1,63 @@
 import requests
 from bs4 import BeautifulSoup
 from urllib.parse import urlparse, urljoin
-from urllib.robotparser import RobotFileParser
 import csv
 import time
 
 visited = set()
 OUTPUT_FILE = "scraped_data.csv"
-RATE_LIMIT_SECONDS = 1  # delay between requests
+DEFAULT_DELAY = 2  # Fallback delay if robots.txt doesn't specify one
 
-# Prepare CSV file
+# Prepare CSV output
 with open(OUTPUT_FILE, mode='w', newline='', encoding='utf-8') as file:
     writer = csv.writer(file)
     writer.writerow(["URL", "Selector", "Content"])
 
-def is_allowed(url):
-    """Check robots.txt for scraping permission"""
+def check_robots_and_delay(url):
+    """Return (is_allowed, crawl_delay) for the given URL"""
     parsed = urlparse(url)
     base_url = f"{parsed.scheme}://{parsed.netloc}"
     robots_url = urljoin(base_url, "/robots.txt")
 
-    rp = RobotFileParser()
     try:
-        rp.set_url(robots_url)
-        rp.read()
-    except:
-        print(f"Could not read robots.txt from {base_url}")
-        return False
+        response = requests.get(robots_url, timeout=10)
+        print(f"[robots.txt] Raw Content:\n{response.text}")  # Print the raw robots.txt content
 
-    return rp.can_fetch("*", url)
+        # Manually parse the robots.txt
+        is_allowed = True  # Assume allowed by default
+        delay = DEFAULT_DELAY  # Assume default delay
+        
+        # Split the content by lines and check for directives
+        lines = response.text.splitlines()
+        for line in lines:
+            line = line.strip()
+            if line.lower().startswith('user-agent:'):
+                user_agent = line.split(":")[1].strip()
+                if user_agent == '*' or user_agent.lower() == '*':
+                    # Check for Crawl-delay in the same section
+                    for sub_line in lines[lines.index(line)+1:]:
+                        sub_line = sub_line.strip()
+                        if sub_line.lower().startswith('crawl-delay:'):
+                            delay = int(sub_line.split(":")[1].strip())
+                            print(f"[robots.txt] Found crawl-delay: {delay} seconds")
+                            break
+                        elif sub_line.startswith("User-agent:"):
+                            # Stop if a new User-agent section is encountered
+                            break
+        
+        return is_allowed, delay
+    except Exception as e:
+        print(f"[robots.txt] Failed to read from {robots_url}: {e}")
+        return False, DEFAULT_DELAY
 
 def get_subdomain_links(url, domain):
-    """Extract subdomain links"""
+    """Extract links to subdomains of the given domain"""
     links = set()
     try:
         html = requests.get(url, timeout=10).text
         soup = BeautifulSoup(html, 'html.parser')
     except Exception as e:
-        print(f"Error fetching {url}: {e}")
+        print(f"[Fetch Error] {url}: {e}")
         return links
 
     for tag in soup.find_all("a", href=True):
@@ -51,13 +71,15 @@ def get_subdomain_links(url, domain):
     return links
 
 def scrape_data(url, selectors):
-    """Scrape page content by CSS selectors"""
-    print(f"\nScraping: {url}")
+    """Extract and save content using provided selectors"""
+    print(f"[Scraping] {url}")
     try:
         response = requests.get(url, timeout=10)
         response.raise_for_status()
+        print(response.text)
+        print(response.status_code)
     except Exception as e:
-        print(f"Failed to fetch {url}: {e}")
+        print(f"[Request Error] {url}: {e}")
         return
 
     soup = BeautifulSoup(response.text, 'html.parser')
@@ -66,13 +88,14 @@ def scrape_data(url, selectors):
         writer = csv.writer(file)
         for selector in selectors:
             elements = soup.select(selector)
-            for el in elements[:5]:  # limit results per selector
+            for el in elements[:5]:  # Limit to 5 elements per selector
                 text = el.get_text(strip=True)
                 if text:
                     writer.writerow([url, selector, text])
-                    print(f" - ({selector}) {text}")
+                    print(f"  - ({selector}) {text}")
 
 def crawl_site(base_url, selectors):
+    """Main crawl logic for a single target site"""
     parsed = urlparse(base_url)
     domain = parsed.netloc
     to_visit = {base_url}
@@ -83,24 +106,22 @@ def crawl_site(base_url, selectors):
             continue
         visited.add(current_url)
 
-        if not is_allowed(current_url):
-            print(f"Blocked by robots.txt: {current_url}")
+        allowed, delay = check_robots_and_delay(current_url)
+        if not allowed:
+            print(f"[robots.txt] Blocked: {current_url}")
             continue
 
         scrape_data(current_url, selectors)
         new_links = get_subdomain_links(current_url, domain)
         to_visit.update(new_links - visited)
 
-        time.sleep(RATE_LIMIT_SECONDS)  # rate limit
+        print(f"[Delay] Waiting {delay}s...")
+        time.sleep(delay)
 
 # --- Configuration ---
 targets = [
     {
-        "url": "https://www.python.org",
-        "selectors": ["h2", "a.button"]
-    },
-    {
-        "url": "https://www.wikipedia.org",
+        "url": "https://www.pokemons.dk",
         "selectors": ["strong", "a.link-box"]
     }
 ]
