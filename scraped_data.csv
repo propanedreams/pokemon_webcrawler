@@ -8,46 +8,58 @@ https://www.python.org,a.button,>_Launch Interactive Shell
 https://www.python.org,a.button,REGISTER FOR PYCON US!
 https://www.python.org,a.button,Become a Member
 https://www.python.org,a.button,Donate to the PSF
-https://www.python.org/psf/annual-report/2021/,a.button,REGISTER FOR PYCON US!
-https://www.python.org/success-stories/saving-the-world-with-open-data-and-python/,h2,The policy side
-https://www.python.org/success-stories/saving-the-world-with-open-data-and-python/,h2,The Python Side
-https://www.python.org/success-stories/saving-the-world-with-open-data-and-python/,h2,Thanks Python!
-https://www.python.org/events/,h2,Upcoming Events
-https://www.python.org/events/,h2,Python Events Calendars
-https://www.python.org/success-stories/saving-the-world-with-open-data-and-python/#top,h2,The policy side
-https://www.python.org/success-stories/saving-the-world-with-open-data-and-python/#top,h2,The Python Side
-https://www.python.org/success-stories/saving-the-world-with-open-data-and-python/#top,h2,Thanks Python!
-https://www.python.org/dev/security/,h2,Vulnerability handling
-https://www.python.org/dev/security/,h2,Bug bounties
-https://www.python.org/psf/annual-report/2021/#top,a.button,REGISTER FOR PYCON US!
+https://www.python.org/community/awards,a.button,REGISTER FOR PYCON US!
+https://www.python.org/psf/newsletter/,h2,Subscribe
+https://www.python.org/psf/newsletter/,a.button,REGISTER FOR PYCON US!
+https://www.python.org/psf/newsletter/#top,h2,Subscribe
+https://www.python.org/psf/newsletter/#top,a.button,REGISTER FOR PYCON US!
 https://www.python.org/psf/conduct/,h2,Our Community
 https://www.python.org/psf/conduct/,h2,Our Standards
 https://www.python.org/psf/conduct/,h2,Scope
 https://www.python.org/psf/conduct/,h2,Procedure for Handling Incidents
 https://www.python.org/psf/conduct/,h2,License
-https://www.python.org/psf/records/,a.button,REGISTER FOR PYCON US!
-https://www.python.org/psf/conduct/#python-software-foundation-code-of-conduct,h2,Our Community
-https://www.python.org/psf/conduct/#python-software-foundation-code-of-conduct,h2,Our Standards
-https://www.python.org/psf/conduct/#python-software-foundation-code-of-conduct,h2,Scope
-https://www.python.org/psf/conduct/#python-software-foundation-code-of-conduct,h2,Procedure for Handling Incidents
-https://www.python.org/psf/conduct/#python-software-foundation-code-of-conduct,h2,License
-https://www.python.org/dev/security/#top,h2,Vulnerability handling
-https://www.python.org/dev/security/#top,h2,Bug bounties
+https://www.python.org/psf/conduct/#psf-online-spaces,h2,Our Community
+https://www.python.org/psf/conduct/#psf-online-spaces,h2,Our Standards
+https://www.python.org/psf/conduct/#psf-online-spaces,h2,Scope
+https://www.python.org/psf/conduct/#psf-online-spaces,h2,Procedure for Handling Incidents
+https://www.python.org/psf/conduct/#psf-online-spaces,h2,License
+https://www.python.org/psf/annual-report/2021/,a.button,REGISTER FOR PYCON US!
+https://www.python.org/psf/annual-report/2021/#python-network,a.button,REGISTER FOR PYCON US!
+https://www.python.org/psf/mission/,a.button,REGISTER FOR PYCON US!
 https://www.python.org/psf/developersinresidence/,h2,Åukasz Langa
 https://www.python.org/psf/developersinresidence/,h2,Mike Fiedler
 https://www.python.org/psf/developersinresidence/,h2,Petr Viktorin
 https://www.python.org/psf/developersinresidence/,h2,Serhiy Storchaka
 https://www.python.org/psf/developersinresidence/,h2,Seth Larson
-https://www.python.org/psf/records/#content,a.button,REGISTER FOR PYCON US!
-https://www.python.org/psf/donations/matching-gifts/,h2,How to donate and have your company match
-https://www.python.org/psf/donations/matching-gifts/,a.button,REGISTER FOR PYCON US!
-https://www.python.org/psf/conduct/#our-community,h2,Our Community
-https://www.python.org/psf/conduct/#our-community,h2,Our Standards
-https://www.python.org/psf/conduct/#our-community,h2,Scope
-https://www.python.org/psf/conduct/#our-community,h2,Procedure for Handling Incidents
-https://www.python.org/psf/conduct/#our-community,h2,License
-https://www.python.org/psf/grants/faq/,a.button,REGISTER FOR PYCON US!
-https://www.python.org/downloads/macos/,h2,Stable Releases
-https://www.python.org/downloads/macos/,h2,Pre-releases
-https://www.python.org/downloads/release/python-350a2/,h2,"Major new features of the 3.5 series, compared to 3.4"
-https://www.python.org/downloads/release/python-350a2/,h2,More resources
+https://www.python.org/psf-landing/,h2,Become a Member
+https://www.python.org/psf-landing/,h2,Donate
+https://www.python.org/psf-landing/,h2,Volunteer
+https://www.python.org/psf-landing/,h2,Sponsors
+https://www.python.org/psf-landing/,h2,PSF Grants Program
+https://www.python.org/psf-landing/,a.button,REGISTER FOR PYCON US!
+https://www.python.org/psf-landing/,a.button,Membership FAQ
+https://www.python.org/psf-landing/,a.button,How to Contribute
+https://www.python.org/psf-landing/,a.button,How to Volunteer
+https://www.python.org/psf-landing/,a.button,Sponsorship Possibilities
+https://www.python.org/psf/developersinresidence/#python-network,h2,Åukasz Langa
+https://www.python.org/psf/developersinresidence/#python-network,h2,Mike Fiedler
+https://www.python.org/psf/developersinresidence/#python-network,h2,Petr Viktorin
+https://www.python.org/psf/developersinresidence/#python-network,h2,Serhiy Storchaka
+https://www.python.org/psf/developersinresidence/#python-network,h2,Seth Larson
+https://www.python.org/community/awards#site-map,a.button,REGISTER FOR PYCON US!
+https://www.python.org/psf/conduct/#our-standards,h2,Our Community
+https://www.python.org/psf/conduct/#our-standards,h2,Our Standards
+https://www.python.org/psf/conduct/#our-standards,h2,Scope
+https://www.python.org/psf/conduct/#our-standards,h2,Procedure for Handling Incidents
+https://www.python.org/psf/conduct/#our-standards,h2,License
+https://www.python.org#python-network,h2,Get Started
+https://www.python.org#python-network,h2,Download
+https://www.python.org#python-network,h2,Docs
+https://www.python.org#python-network,h2,Jobs
+https://www.python.org#python-network,h2,Latest News
+https://www.python.org#python-network,a.button,>_Launch Interactive Shell
+https://www.python.org#python-network,a.button,REGISTER FOR PYCON US!
+https://www.python.org#python-network,a.button,Become a Member
+https://www.python.org#python-network,a.button,Donate to the PSF
+https://www.python.org/downloads/source/,h2,Stable Releases
+https://www.python.org/downloads/source/,h2,Pre-releases
